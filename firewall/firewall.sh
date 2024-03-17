@@ -20,7 +20,7 @@ iptables -A INPUT -p udp --dport 67:68 --sport 67:68 -j ACCEPT
 
 # Permitindo tráfego DNS
 iptables -A INPUT -p udp --dport 53 -j ACCEPT
-iptables -A INPUT -p tcp --dport 53 -ACCEPT
+iptables -A INPUT -p tcp --dport 53 -j ACCEPT
 
 # Bloqueado o trem 
 iptables -A INPUT -s 200.18.168.100 -p icmp --icmp-type echo-request -j DROP
