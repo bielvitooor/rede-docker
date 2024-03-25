@@ -1,9 +1,3 @@
-acl goodclients {
-    192.168.0.0/16;
-    localhost;
-    localnets;
-};
-
 options {
     directory "/var/cache/bind";
 

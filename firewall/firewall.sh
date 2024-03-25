@@ -1,5 +1,6 @@
 #!/bin/bash
-tail -f /dev/null
+mkdir -p /etc/iptables
+apt install iputils-ping
 # Limpando todas as regras existentes
 iptables -F
 iptables -X
@@ -22,5 +23,10 @@ iptables -A INPUT -p udp --dport 67:68 --sport 67:68 -j ACCEPT
 iptables -A INPUT -p udp --dport 53 -j ACCEPT
 iptables -A INPUT -p tcp --dport 53 -j ACCEPT
 
-# Bloqueado o trem 
-iptables -A INPUT -s 200.18.168.100 -p icmp --icmp-type echo-request -j DROP
+# Bloqueado o trem
+iptables -A OUTPUT -d ifg.edu.br -j DROP
+
+iptables -L -v
+iptables-save > /etc/iptables/rules.v4
+service iptables restart
+tail -f /dev/null
