@@ -1,6 +1,10 @@
 #!/bin/bash
 mkdir -p /etc/iptables
+dhclient -r eth0
+dhclient eth0
 apt install iputils-ping
+apt install dnsutils -y
+apt install net-tools
 # Limpando todas as regras existentes
 iptables -F
 iptables -X
